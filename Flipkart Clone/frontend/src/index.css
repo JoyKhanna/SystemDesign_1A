@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navbar-height: 56px;
+  --main-offset-desktop: 112px;
+  --main-offset-mobile: 56px;
+  /* Sticky sidebars / summaries: below fixed navbar only (no category bar on these routes) */
+  --sticky-below-header: calc(var(--navbar-height) + 12px);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f1f3f6;
+  color: #212121;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, select, textarea {
+  font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f3f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
