@@ -1,0 +1,63 @@
+class Warehouse:
+    def __init__(self):
+        self.items = {"apple": 10, "banana": 5}
+
+    def is_present(self, item):
+        return item in self.items
+
+    def cal(self, item):
+        return self.items.get(item, 0)
+
+    def update(self, item, stock):
+        self.items[item] = stock
+
+
+class Payment:
+    def pay(self):
+        pass
+
+    def get_receipt(self):
+        return "XYZ123"
+
+
+class EmailService:
+    def send(self, subject, message):
+        print(f"Email Sent!\nSubject: {subject}\nMessage: {message}")
+
+
+def main():
+    ware = Warehouse()
+
+    item = input("Enter item: ")
+    quantity = int(input("Enter quantity: "))
+
+    if not ware.is_present(item):
+        print("Item is out of stock")
+        return
+
+    stock = ware.cal(item)
+    stock -= quantity
+    ware.update(item, stock)
+
+    ok = False
+    pay = Payment()
+
+    try:
+        pay.pay()
+        ok = True
+    except Exception:
+        print("Payment failed")
+
+    if ok:
+        print("Order placed successfully")
+        email = EmailService()
+        email.send(
+            "Order Confirmation",
+            f"Your order for {quantity} {item} has been placed successfully and receipt is: {pay.get_receipt()}"
+        )
+    else:
+        print("Order failed")
+
+
+if __name__ == "__main__":
+    main()
